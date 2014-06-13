@@ -6,6 +6,8 @@
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
+//var items = require('./routes/items');
+//var queues = require('./routes/queues');
 var http = require('http');
 var path = require('path');
 
@@ -22,14 +24,31 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use('/components', express.static(path.join(__dirname, 'bower_components')));
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+//app.get('/', routes.index);
 app.get('/users', user.list);
+/*
+//rest apis
+app.get("/api/items", items.findAll);
+app.get("/api/items/:id", items.findById);
+app.post("/api/items", items.create);
+app.put("/api/items", items.update);
+app.delete("/api/items", items.delete);
+app.post("/api/items/find", items.find);
+
+app.get("/api/queues", queues.findAll);
+app.get("/api/queues/:id", queues.findById);
+app.post("/api/queues", queues.create);
+app.put("/api/queues", queues.update);
+app.delete("/api/queues", queues.delete);
+app.post("/api/queues/find", queues.find);
+*/
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
