@@ -1,9 +1,22 @@
 define([
-    'localStorage'
+    'localStorage',
+    'backbone-relational',
+    'models/Comment'
   ], function() {
 	
 	var Item = Backbone.Model.extend({
-	 
+
+		localStorage: new Backbone.LocalStorage("nowserving_items"),
+
+		relations: [{
+			type: "HasMany",
+			key: "comments",
+			relatedModel: "Comment",
+			reversRelation: {
+				key: "item"
+			}
+		}],
+		
 	    defaults:{
 	        queueId: "default",
 	        name: "",
@@ -22,7 +35,7 @@ define([
 	
 	var Items = Backbone.Collection.extend({
 		model : Item,
-		
+
 		localStorage: new Backbone.LocalStorage("nowserving_items"),
 		
 		served: function(){

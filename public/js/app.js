@@ -1,6 +1,3 @@
-/**
- * New node file
- */
 
 require.config({	
 	baseUrl: "js/",
@@ -8,7 +5,9 @@ require.config({
 		jquery: 'lib/jquery/dist/jquery',
 		underscore: 'lib/underscore/underscore',
 	    backbone: 'lib/backbone/backbone',
+		text: 'lib/requirejs-text/text',
 	    localStorage: 'lib/backbone.localStorage/backbone.localStorage',
+	    "backbone-relational": "lib/backbone-relational/backbone-relational",
 	    bootstrap: 'lib/bootstrap/dist/js/bootstrap'
 	},
 	shim: {
@@ -20,6 +19,10 @@ require.config({
 			exports: 'Backbone'
 		},
 		'backbone.localStorage': {
+			deps: ['backbone'],
+			exports: 'Backbone'
+		},
+		'backbone-relational': {
 			deps: ['backbone'],
 			exports: 'Backbone'
 		}

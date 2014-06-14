@@ -3,14 +3,16 @@
 define([
     'backbone',
     'models/Item',
-    'views/ItemView'
-  ], function(Backbone, Item, ItemView) {
+    'views/ItemView',
+    'models/Comment',
+    'text!views/StatsTemplate.html'
+  ], function(Backbone, Item, ItemView, Comment, StatsTemplate) {
 	
 	var NowServingAppView = Backbone.View.extend({
 		
 		el: "#nowserving_app",
 		
-		statsTemplate : _.template($("#stats_template").html()),
+		statsTemplate : _.template(StatsTemplate),
 		
 		events: {
 			"keyup .add_item": "handleAddItemKeyUp",
@@ -55,6 +57,7 @@ define([
 		addOneItem: function(item){
 			console.log("addOneItem called with " + item);
 			var view = new ItemView({model: item});
+			console.log(item);
 			this.$("#items").append(view.render().el);
 		},
 		

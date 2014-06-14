@@ -1,13 +1,16 @@
 define([
     'backbone',
-    'models/Item'
-  ], function(Backbone, Item) {
+    'models/Item',
+    'text!views/ItemView.html'
+  ], function(Backbone, Item, Template) {
 	
 	var ItemView = Backbone.View.extend({
 		
 		tagName : "li",
+		
+		className : "item",
 	
-		template : _.template($("#item_template").html()),
+		template : _.template(Template),
 	
 		events : {
 			"click .toggle_served": "toggleServed",
