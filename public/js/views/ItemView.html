@@ -1,0 +1,24 @@
+
+<!-- Underscore template to display an Item -->
+<div class="view">
+	<input class="toggle_served input-xl" type="checkbox" <%= served ? 'checked="checked"' : '' %> />			
+	<button type="button" class="discussion btn btn-info" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+ 			<span class="glyphicon glyphicon-comment"></span> 3
+	</button>   	
+	<label class="item_field item_name"><%- name %></label>		
+	<a class="item_field item_phone" href="tel:<%- phone %>"><%- phone %></a>
+	<a class="item_field item_email" href="mailto:<%- email %>"><%- email %></a>
+	<span class="item_field item_notes"><%- notes %></span>    
+	<button type="button" class="remove btn btn-default btn-md pull-right">
+		<span class="glyphicon glyphicon-remove"></span>
+	</button>
+   </div>
+<form class="edit form-inline" role="form">
+	<input class="edit_name form-control" type="text" placeholder="Name" value="<%- name %>" />
+	<input class="edit_phone form-control" type="tel" placeholder="Mobile" value="<%- phone %>" />
+	<input class="edit_email form-control" type="email" placeholder="Email" value="<%- email %>" />
+	<input class="edit_notes form-control" type="text" placeholder="Notes" value="<%- notes %>" />
+	<button type="button" class="save btn btn-default pull-right">
+ 			<span class="glyphicon glyphicon-save"></span>
+	</button>
+</form>
